@@ -1,0 +1,17 @@
+{
+  "metadata": [
+    {
+      "src": [
+        { "files": [ "**.csproj" ], "src": "../" }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      { "files": [ "**/*.yml", "**/*.md" ] }
+    ],
+    "dest": "_site",
+    "template": [ "default" ]
+  }
+}
