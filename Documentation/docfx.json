@@ -2,16 +2,26 @@
   "metadata": [
     {
       "src": [
-        { "files": [ "**.csproj" ], "src": "../" }
+        {
+          "files": [ "MyPackage/**/*.csproj" ],
+          "src": "../"
+        }
       ],
-      "dest": "api"
+      "dest": "api",
+      "allowCompilationErrors": true,
+      "disableGitFeatures": false
     }
   ],
   "build": {
     "content": [
-      { "files": [ "**/*.yml", "**/*.md" ] }
+      { "files": [ "toc.yml", "*.md" ] },
+      { "files": [ "api/**.yml" ], "src": "api" }
     ],
     "dest": "_site",
-    "template": [ "default" ]
+    "template": [ "default", "modern" ],
+    "globalMetadata": {
+      "_appTitle": "My Unity Package Docs",
+      "_enableSearch": true
+    }
   }
 }
