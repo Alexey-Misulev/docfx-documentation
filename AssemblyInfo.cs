@@ -9,6 +9,9 @@ namespace RenderCore
 	{
 		internal const string AssemblyVersion = "2.7.0";
 
+
+
+
 		public static Version version => new Version(AssemblyVersion);
 	}
 }
