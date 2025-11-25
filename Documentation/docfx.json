@@ -9,7 +9,9 @@
       ],
       "dest": "api",
       "allowCompilationErrors": true,
-      "disableGitFeatures": false
+      "disableDefaultFilter": false,
+      "disableGitFeatures": false,
+      "noRestore": true
     }
   ],
   "build": {
@@ -22,6 +24,7 @@
     "globalMetadata": {
       "_appTitle": "My Unity Package Docs",
       "_enableSearch": true
-    }
+    },
+    "noLangKeyword": false
   }
 }
