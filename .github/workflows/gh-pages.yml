@@ -30,7 +30,7 @@ jobs:
           dotnet-version: '8.x'
 
       # === 🔍 ОТЛАДКА 1: Структура репозитория ===
-      - name: 🔍 Debug: List all .cs and .csproj files
+      - name: 🔍 List all .cs and .csproj files
         run: |
           echo "=== .cs files ==="
           find . -name "*.cs" | sort
@@ -40,7 +40,7 @@ jobs:
           ls -la MyPackage/ 2>/dev/null || echo "MyPackage/ not found"
 
       # === 🔍 ОТЛАДКА 2: Проверка содержимого .csproj ===
-      - name: 🔍 Debug: Show MyPackage.csproj content
+      - name: 🔍 Show MyPackage.csproj content
         run: |
           if [ -f "MyPackage/MyPackage.csproj" ]; then
             echo "=== MyPackage.csproj content ==="
@@ -50,7 +50,7 @@ jobs:
           fi
 
       # === 🔍 ОТЛАДКА 3: Проверка содержимого одного .cs файла ===
-      - name: 🔍 Debug: Show first .cs file content (for XML comments check)
+      - name: 🔍 Show first .cs file content (for XML comments check)
         run: |
           CS_FILE=$(find . -name "*.cs" | head -n1)
           if [ -n "$CS_FILE" ]; then
@@ -68,7 +68,7 @@ jobs:
           docfx Documentation/docfx.json
 
       # === 🔍 ОТЛАДКА 4: Проверка результата сборки ===
-      - name: 🔍 Debug: Check Documentation/_site contents
+      - name: 🔍 Check Documentation/_site contents
         run: |
           echo "=== Documentation/_site/ ==="
           ls -la Documentation/_site/
@@ -82,7 +82,7 @@ jobs:
           fi
 
       # === 🔍 ОТЛАДКА 5: Проверка сгенерированных .yml файлов API ===
-      - name: 🔍 Debug: Check api YAML files (raw metadata)
+      - name: 🔍 Check api YAML files (raw metadata)
         run: |
           echo "=== api/ folder in working dir (before build) ==="
           ls -la Documentation/api/ 2>/dev/null || echo "Documentation/api/ not found (expected before 'build' step)"
