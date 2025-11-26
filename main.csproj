@@ -2,6 +2,6 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn> <!-- опционально: не ругаться на отсутствие комментариев -->
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>

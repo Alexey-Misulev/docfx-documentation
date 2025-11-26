@@ -3,30 +3,22 @@
     {
       "src": [
         {
-          "files": [ "**/*.csproj" ],
-          "src": "../"
+          "files": [ "main.csproj" ],
+          "src": ".."
         }
       ],
-      "dest": "api",
-      "disableGitFeatures": false,
-      "disableDefaultFilter": false,
-      "allowCompilationErrors": true
+      "dest": "api"
     }
   ],
   "build": {
     "content": [
-      { "files": [ "toc.yml", "*.md" ] },
+      { "files": [ "toc.yml", "index.md" ] },
       { "files": [ "api/**.yml" ], "src": "api" }
-    ],
-    "resource": [
-      { "files": [ "images/**" ] }
     ],
     "dest": "_site",
     "template": [ "default", "modern" ],
     "globalMetadata": {
-      "_appTitle": "My Project Documentation",
-      "_enableSearch": true,
-      "_disableContribution": true
+      "_appTitle": "My Docs"
     }
   }
 }
