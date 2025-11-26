@@ -3,8 +3,7 @@
     {
       "src": [
         {
-          "files": [ "**/*.cs" ],
-          "src": "../Assets/Scripts"
+          "files": [ "Assets/Scripts/**/*.cs" ]
         }
       ],
       "dest": "api"
@@ -12,10 +11,10 @@
   ],
   "build": {
     "content": [
-      { "files": [ "toc.yml", "index.md" ] },
+      { "files": [ "Documentation/toc.yml", "Documentation/index.md" ] },
       { "files": [ "api/**.yml" ], "src": "api" }
     ],
-    "dest": "_site",
+    "dest": "Documentation/_site",
     "template": [ "default", "modern" ],
     "globalMetadata": {
       "_appTitle": "My Docs"
