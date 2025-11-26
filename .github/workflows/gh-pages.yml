@@ -94,6 +94,11 @@ jobs:
         with:
           path: 'Documentation/_site'
 
+      - name: 🔍 Debug files
+        run: |
+        ls -la Assets/Scripts/
+        ls -la Documentation/
+
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
