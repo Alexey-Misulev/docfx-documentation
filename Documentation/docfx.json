@@ -13,7 +13,7 @@
   "build": {
     "content": [
       { "files": [ "toc.yml", "index.md" ] },
-      { "files": [ "api/**.yml" ], "src": "api" }
+      { "files": [ "api/**/*.yml" ] }
     ],
     "dest": "_site",
     "template": [ "default", "modern" ],
