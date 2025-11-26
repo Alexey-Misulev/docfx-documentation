@@ -1,12 +1,8 @@
 {
   "metadata": [
     {
-      "src": [
-        {
-          "files": [ "Assets/Scripts/**/*.cs" ],
-          "src": "../"
-        }
-      ],
+      "src": "../Assets/Scripts",
+      "files": [ "**/*.cs" ],
       "dest": "api"
     }
   ],
@@ -16,6 +12,9 @@
       { "files": [ "api/**.yml" ], "src": "api" }
     ],
     "dest": "_site",
-    "template": [ "default" ]
+    "template": [ "default", "modern" ],
+    "globalMetadata": {
+      "_appTitle": "My Docs"
+    }
   }
 }
