@@ -34,6 +34,15 @@ jobs:
     - run: dotnet tool update -g docfx
     - run: docfx Documentation/docfx.json
 
+    - name: 🔍 Check api/ and _site
+      run: |
+        echo "=== Documentation/api/ ==="
+        ls -la Documentation/api/ || echo "api/ not created"
+        echo "=== Documentation/_site/ ==="
+        ls -la Documentation/_site/ || echo "_site not created"
+        echo "=== Generated YML files ==="
+        find Documentation/api -name "*.yml" 2>/dev/null || echo "No .yml files"
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
