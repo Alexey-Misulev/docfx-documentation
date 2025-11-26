@@ -3,30 +3,11 @@
 /// </summary>
 public static class ExampleClass
 {
-    public float aaa;
-    public float bbb;
-
     /// <summary>
-    /// Start
+    /// Складывает два целых числа.
     /// </summary>
-    void Start()
-    {
-        
-    }
-
-    /// <summary>
-    /// Update
-    /// </summary>
-    void Update()
-    {
-        Debug.LogError(Add(aaa, bbb));
-    }
-    
-    /// <summary>
-    /// Складывает два числа.
-    /// </summary>
-    /// <param name="a">Первое число.</param>
-    /// <param name="b">Второе число.</param>
-    /// <returns>Сумма a и b.</returns>
-    public static float Add(float a, float b) => a + b;
+    /// <param name="x">Первое число.</param>
+    /// <param name="y">Второе число.</param>
+    /// <returns>Сумма x + y.</returns>
+    public static int Add(int x, int y) => x + y;
 }
