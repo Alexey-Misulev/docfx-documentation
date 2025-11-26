@@ -3,12 +3,11 @@
     {
       "src": [
         {
-          "files": [ "Assets/Scripts/**/*.csproj" ],
+          "files": [ "Assets/Scripts/**/*.cs" ],
           "src": "../"
         }
       ],
-      "dest": "api",
-      "allowCompilationErrors": true
+      "dest": "api"
     }
   ],
   "build": {
@@ -17,9 +16,6 @@
       { "files": [ "api/**.yml" ], "src": "api" }
     ],
     "dest": "_site",
-    "template": [ "default", "modern" ],
-    "globalMetadata": {
-      "_appTitle": "My Docs"
-    }
+    "template": [ "default" ]
   }
 }
