@@ -1,19 +1,22 @@
-# .github/workflows/docs.yml
-name: 📖 Publish Documentation
-
+# Your GitHub workflow file under .github/workflows/
+# Trigger the action on push to main
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   actions: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
+  
 jobs:
   publish-docs:
     environment:
@@ -21,79 +24,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout
-        uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
 
-      - name: 🧱 Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.x'
+    - run: dotnet tool update -g docfx
+    - run: docfx Documentation/docfx.json
 
-      # === 🔍 ОТЛАДКА 1: Структура репозитория ===
-      - name: 🔍 List all .cs and .csproj files
-        run: |
-          echo "=== .cs files ==="
-          find . -name "*.cs" | sort
-          echo "=== .csproj files ==="
-          find . -name "*.csproj" | sort
-          echo "=== MyPackage folder ==="
-          ls -la MyPackage/ 2>/dev/null || echo "MyPackage/ not found"
-
-      # === 🔍 ОТЛАДКА 2: Проверка содержимого .csproj ===
-      - name: 🔍 Show MyPackage.csproj content
-        run: |
-          if [ -f "MyPackage/MyPackage.csproj" ]; then
-            echo "=== MyPackage.csproj content ==="
-            cat MyPackage/MyPackage.csproj
-          else
-            echo "MyPackage.csproj not found!"
-          fi
-
-      # === 🔍 ОТЛАДКА 3: Проверка содержимого одного .cs файла ===
-      - name: 🔍 Show first .cs file content (for XML comments check)
-        run: |
-          CS_FILE=$(find . -name "*.cs" | head -n1)
-          if [ -n "$CS_FILE" ]; then
-            echo "=== First .cs file: $CS_FILE ==="
-            head -n10 "$CS_FILE"
-          else
-            echo "No .cs files found!"
-          fi
-
-      - name: 📦 Install DocFX
-        run: dotnet tool install -g docfx
-
-      - name: 📚 Build documentation
-        run: |
-          docfx Documentation/docfx.json
-
-      # === 🔍 ОТЛАДКА 4: Проверка результата сборки ===
-      - name: 🔍 Check Documentation/_site contents
-        run: |
-          echo "=== Documentation/_site/ ==="
-          ls -la Documentation/_site/
-          echo "=== Documentation/_site/api/ ==="
-          ls -la Documentation/_site/api/ 2>/dev/null || echo "api/ directory not created"
-          echo "=== Check if index.html exists ==="
-          if [ -f "Documentation/_site/index.html" ]; then
-            echo "✅ index.html exists"
-          else
-            echo "❌ index.html MISSING"
-          fi
-
-      # === 🔍 ОТЛАДКА 5: Проверка сгенерированных .yml файлов API ===
-      - name: 🔍 Check api YAML files (raw metadata)
-        run: |
-          echo "=== api/ folder in working dir (before build) ==="
-          ls -la Documentation/api/ 2>/dev/null || echo "Documentation/api/ not found (expected before 'build' step)"
-          echo "=== Content of first .yml in api/ ==="
-          find Documentation/api -name "*.yml" | head -n1 | xargs cat 2>/dev/null || echo "No .yml files generated"
-
-      - name: 📤 Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'Documentation/_site'
-
-      - name: 🚀 Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        # Upload entire repository
+        path: 'Documentation/_site'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
