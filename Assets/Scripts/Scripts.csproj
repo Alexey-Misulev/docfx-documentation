@@ -3,12 +3,5 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <LangVersion>latest</LangVersion>
-    <!-- Подавляем ошибки отсутствия UnityEngine -->
-    <NoWarn>$(NoWarn);CS0246;CS0109;CS0108</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <!-- Включаем ВСЕ .cs файлы в этой папке и подпапках -->
-    <Compile Include="**/*.cs" />
-  </ItemGroup>
 </Project>

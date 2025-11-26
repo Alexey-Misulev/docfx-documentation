@@ -1,20 +1,22 @@
-using UnityEngine;
-
 /// <summary>
 /// Пример класса для документации.
 /// </summary>
-public class ExampleClass : MonoBehaviour
+public static class ExampleClass
 {
     public float aaa;
     public float bbb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// Start
+    /// </summary>
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update
+    /// </summary>
     void Update()
     {
         Debug.LogError(Add(aaa, bbb));
