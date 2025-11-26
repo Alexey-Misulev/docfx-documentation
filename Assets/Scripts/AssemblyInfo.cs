@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 
 namespace RenderCore
 {
+	/// <summary>
+	/// AssemblyInfo
+	/// </summary>
 	public static class AssemblyInfo
 	{
 		internal const string AssemblyVersion = "2.7.0";
