@@ -1,8 +1,12 @@
 {
   "metadata": [
     {
-      "src": "../Assets/Scripts",
-      "files": [ "**/*.cs" ],
+      "src": [
+        {
+          "src": "../Assets/Scripts",
+          "files": [ "**/*.cs" ]
+        }
+      ],
       "dest": "api"
     }
   ],
